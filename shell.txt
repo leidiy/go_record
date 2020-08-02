@@ -42,3 +42,25 @@ gpasswd -d user1 root 将user1从root组删除
 1.chmod
 2.acl
 3.sudo
+
+1. chmod o+w net.txt  对应net.txt文件给其他用户增加w权限 这个是真对所有其他用户的不够好
+2. chmod g+w net.txt  针对组增加w权限
+文件数字权限
+chmod 755 net.txt
+w 4
+r 2
+x 1
+默认权限 644
+
+---------------
+运行脚本
+vi a.sh
+
+----
+#! /bin/bash
+abcdefg
+____
+chmod a+w a.sh  给sh添加运行权限
+
+
+
