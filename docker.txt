@@ -1,0 +1,33 @@
+docker run [options] images [command] [args...]
+options:
+-i ：表示启动一个可以交互的容器，并持续打开标准输入
+-t ：表示使用终端关联到容器的标准输入输出上
+-d : 表示后台运行
+--rm : 退出后立即删除容器
+--name：定义唯一名称
+IMAGE： 表示容器的镜像
+COMMAND：表示容器启动时要运行的命令
+
+------------
+查询宿主机进程：
+ps aux|grep ~|grep -v grep
+
+-----------
+进入容器
+docker exec -it 【容器ID】 /bin/sh
+
+docker commit -p 容器ID
+
+docker save 镜像ID >alpine:v1.tar
+docker load < alpine:v1.tar
+docker tag
+
+---------
+日志
+docker logs -f 容器ID   类似 tail -f
+
+
+
+
+
+

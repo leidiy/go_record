@@ -1,0 +1,44 @@
+shell 脚本
+1.tab 键
+2.history
+!（~）执行最后一个匹配的命令
+abcd 1> net.txt 表示如果1 前面的命令是正确的，则输出到net.txt中
+abcd 2> net.txt 表示如果2 前面的命令是错误的，则输出到net.txt中
+----------
+如何将错误的和正确的都输入到指定文件中内；
+1==1 1>> net.txt 2>&1
+
+-------------------------
+权限
+
+1.w 写
+2.r 读
+3.x 执行
+
+用户：
+1.所有者(u)
+2.所有组(g)
+3.其他用户(o)
+4.所有用户(a)
+
+查看权限命令 ls -l    简写：ll
+-rw-r--r--   1 root root         50 Aug  2 19:10 net.txt
+1.root 用户有读写权限
+2.root组内用户有只读权限
+3.其他用户 有只读权限
+
+用户的管理
+cat /etc/passwd 查看所有用户
+1.id user1  查看用户
+2.useradd -r user1 新增用户
+3.userdel -r user1 删除用户
+
+用户与组
+将用户加入组
+gpasswd -a user1 root 将user1加入root组
+gpasswd -d user1 root 将user1从root组删除
+
+用户与文件的权限
+1.chmod
+2.acl
+3.sudo
