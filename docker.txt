@@ -1,4 +1,5 @@
 docker run [options] images [command] [args...]
+eg: docker run -it -p 8080:8080 tomcat:9.0
 options:
 -i ：表示启动一个可以交互的容器，并持续打开标准输入
 -t ：表示使用终端关联到容器的标准输入输出上
@@ -13,21 +14,39 @@ COMMAND：表示容器启动时要运行的命令
 ps aux|grep ~|grep -v grep
 
 -----------
-进入容器
-docker exec -it 【容器ID】 /bin/sh
+【进入正在運行的容器】
+方式1：docker exec -it 【容器ID】 /bin/sh [常用]
+方式2：docker attach 容器ID  可以看見正在運行的内容
+docker run --name -it mysql /bin/bash
+退出：CTRL+Ｐ＋Ｑ　容器不停止退出
 
+进入运行的tomcat中将webapps.dist 下的文件cp到webapps
+cp -r webapps.dist/* webapps 递归拷贝
+
+提交新的镜像
 docker commit -p 容器ID
+docker commit -m="新的tomcat" -a="狂神" 7b675ee47b33 tomcat9:v01
 
 docker save 镜像ID >alpine:v1.tar
 docker load < alpine:v1.tar
 docker tag
 
+
+
+
 ---------
 日志
-docker logs -f 容器ID   类似 tail -f
+-tf 是時間、格式的意思
+10 是條數
+docker logs -tf --tail 10 容器ID   类似 tail -f
+docker top 容器ID 查看容器内部信息
+
+docker inspect imageID  查看鏡像元信息
+
+docker cp 容器ID:/home/test.java /home  將容器内home文件夾下test.java 的文件cp到linux home下
+
+docker run -d --name nginx01 -p 3340:80 nginx
 
 
-
-
-
+------------------------
 
